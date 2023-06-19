@@ -5,15 +5,9 @@ defineProps<{
   id: string
   text: string
   done: boolean
+  doneFunction: () => void
+  deleteFunction: () => void
 }>()
-
-const handleDone = () => {
-  console.log('Done')
-}
-
-const handleDelete = () => {
-  console.log('Delete')
-}
 </script>
 
 <template>
@@ -21,8 +15,8 @@ const handleDelete = () => {
     <div class="dark-container" v-bind:style="done === true ? '' : 'display: none;'"></div>
     <p class="text">{{ text }}</p>
     <div class="button-container">
-      <CustomButton text="Done" color="green" @on-press-function="handleDone" />
-      <CustomButton text="Delete" color="red" @on-press-function="handleDelete" />
+      <CustomButton text="Done" color="green" @on-press-function="doneFunction" />
+      <CustomButton text="Delete" color="red" @on-press-function="deleteFunction" />
     </div>
     <hr class="line" v-bind:style="done == true ? '' : 'display: none;'" />
   </div>

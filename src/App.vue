@@ -4,13 +4,28 @@ import { ref } from 'vue'
 
 const array = ref([
   { id: '1', text: 'string', done: false },
-  { id: '2', text: 'string2', done: true }
+  { id: '2', text: 'string2', done: false }
 ])
+
+const handleDone = (id: string) => {
+  array.value.map((item) => (item.id === id ? (item.done = !item.done) : (item.done = item.done)))
+}
+
+const handleDelete = (id: string) => {
+  array.value = array.value.filter((item) => (item.id === id ? false : true))
+}
 </script>
 
 <template>
   <div>
-    <ToDoItem :id="item.id" :text="item.text" :done="item.done" v-for="item in array" />
+    <ToDoItem
+      :id="item.id"
+      :text="item.text"
+      :done="item.done"
+      :doneFunction="() => handleDone(item.id)"
+      :deleteFunction="() => handleDelete(item.id)"
+      v-for="item in array"
+    />
   </div>
 </template>
 
