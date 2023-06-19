@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <p class="button">{{ text }}</p>
+  <p class="button" @click="$emit('on-press-function')">{{ text }}</p>
 </template>
 
 <style scoped>

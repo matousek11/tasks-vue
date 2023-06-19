@@ -3,7 +3,8 @@ import ToDoItem from './components/ToDoItem.vue'
 </script>
 
 <template>
-  <ToDoItem />
+  <ToDoItem todoItem="text" />
+  <ToDoItem todoItem="text" />
 </template>
 
 <style scoped></style>

@@ -1,13 +1,25 @@
 <script setup lang="ts">
 import CustomButton from './Button.vue'
+
+defineProps<{
+  todoItem: string
+}>()
+
+const handleDone = () => {
+  console.log('Done')
+}
+
+const handleDelete = () => {
+  console.log('Delete')
+}
 </script>
 
 <template>
   <div class="container">
-    <p class="text">TodoItem</p>
+    <p class="text">{{ todoItem }}</p>
     <div class="button-container">
-      <CustomButton text="Done" color="green" />
-      <CustomButton text="Delete" color="red" />
+      <CustomButton text="Done" color="green" @on-press-function="handleDone" />
+      <CustomButton text="Delete" color="red" @on-press-function="handleDelete" />
     </div>
   </div>
 </template>
