@@ -14,8 +14,10 @@ import CustomButton from './Button.vue'
 
 <style scoped>
 .container {
+  min-width: 250px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: rgb(253, 253, 253);
   border: 1px solid lightgrey;
   border-radius: 5px;
