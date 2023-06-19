@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ToDoItem from './components/ToDoItem.vue'
 import { ref } from 'vue'
+import SubmitFormula from './components/SubmitFormula.vue'
 
 const array = ref([
   { id: '1', text: 'string', done: false },
@@ -18,6 +19,7 @@ const handleDelete = (id: string) => {
 
 <template>
   <div>
+    <SubmitFormula />
     <ToDoItem
       :id="item.id"
       :text="item.text"
