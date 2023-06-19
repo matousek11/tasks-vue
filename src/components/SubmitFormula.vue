@@ -7,6 +7,10 @@ defineProps<{
 }>()
 
 let text = ref('')
+
+const resetText = () => {
+  text.value = ''
+}
 </script>
 
 <template>
@@ -18,6 +22,7 @@ let text = ref('')
       @on-press-function="
         () => {
           addFunction(text)
+          resetText()
         }
       "
     />

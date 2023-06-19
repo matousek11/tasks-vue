@@ -26,15 +26,43 @@ const handleDelete = (id: string) => {
 <template>
   <div>
     <SubmitFormula :addFunction="handleAddFormula" />
-    <ToDoItem
-      :id="item.id"
-      :text="item.text"
-      :done="item.done"
-      :doneFunction="() => handleDone(item.id)"
-      :deleteFunction="() => handleDelete(item.id)"
-      v-for="item in array"
-    />
+    <div class="todoScroll">
+      <ToDoItem
+        :id="item.id"
+        :text="item.text"
+        :done="item.done"
+        :doneFunction="() => handleDone(item.id)"
+        :deleteFunction="() => handleDelete(item.id)"
+        v-for="item in array"
+      />
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.todoScroll {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+  height: 400px;
+  overflow-y: scroll;
+}
+.todoScroll::before,
+.todoScroll::after {
+  content: ' ';
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  z-index: 10;
+  pointer-events: none;
+}
+.todoScroll::before {
+  top: 0;
+  background-image: linear-gradient(white, rgba(0, 0, 0, 0));
+}
+.todoScroll::after {
+  bottom: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), white);
+}
+</style>
