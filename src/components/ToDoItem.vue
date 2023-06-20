@@ -37,7 +37,7 @@ defineProps<{
 }
 .dark-container {
   position: absolute;
-  left: -1px;
+  left: 0;
   width: 100%;
   height: 100%;
   min-width: 250px;
@@ -51,8 +51,8 @@ defineProps<{
 }
 .line {
   position: absolute;
-  left: -10%;
-  width: 120%;
+  left: 0;
+  width: 100%;
   height: 1px;
   color: transparent;
   background-color: black;

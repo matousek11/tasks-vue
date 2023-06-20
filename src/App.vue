@@ -4,10 +4,13 @@ import { ref } from 'vue'
 import SubmitFormula from './components/SubmitFormula.vue'
 import { v4 as uuidv4 } from 'uuid'
 
-const array = ref([
-  { id: '1', text: 'string', done: false },
-  { id: '2', text: 'string2', done: false }
-])
+type NoteObj = {
+  id: string
+  text: string
+  done: boolean
+}
+
+let array = ref<NoteObj[]>([])
 
 const handleAddFormula = (text: string) => {
   let randomId = uuidv4()
@@ -24,45 +27,56 @@ const handleDelete = (id: string) => {
 </script>
 
 <template>
-  <div>
-    <SubmitFormula :addFunction="handleAddFormula" />
-    <div class="todoScroll">
-      <ToDoItem
-        :id="item.id"
-        :text="item.text"
-        :done="item.done"
-        :doneFunction="() => handleDone(item.id)"
-        :deleteFunction="() => handleDelete(item.id)"
-        v-for="item in array"
-      />
+  <div class="main-container">
+    <div class="glassomorphism"></div>
+    <div class="app-container">
+      <SubmitFormula :addFunction="handleAddFormula" />
+
+      <div class="todoScroll">
+        <ToDoItem
+          :id="item.id"
+          :text="item.text"
+          :done="item.done"
+          :doneFunction="() => handleDone(item.id)"
+          :deleteFunction="() => handleDelete(item.id)"
+          v-for="item in array"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.todoScroll {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  position: relative;
-  height: 400px;
-  overflow-y: scroll;
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/bubles.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.todoScroll::before,
-.todoScroll::after {
-  content: ' ';
-  display: none;
+.glassomorphism {
   position: absolute;
-  width: 100%;
-  height: 100px;
-  z-index: 10;
-  pointer-events: none;
-}
-.todoScroll::before {
   top: 0;
-  background-image: linear-gradient(white, rgba(0, 0, 0, 0));
-}
-.todoScroll::after {
+  left: 0;
+  right: 0;
   bottom: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), white);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.app-container {
+  margin: 5px;
+}
+.app-container .todoScroll {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative;
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: visible;
 }
 </style>

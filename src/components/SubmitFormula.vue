@@ -15,22 +15,34 @@ const resetText = () => {
 
 <template>
   <div class="container">
-    <input placeholder="Task" v-model="text" />
-    <CustomButton
-      text="Submit"
-      color="green"
-      @on-press-function="
-        () => {
-          addFunction(text)
-          resetText()
-        }
-      "
-    />
+    <h1 class="header">Notes</h1>
+    <div class="input-container">
+      <input placeholder="Task" v-model="text" />
+      <CustomButton
+        text="Submit"
+        color="green"
+        @on-press-function="
+          () => {
+            addFunction(text)
+            resetText()
+          }
+        "
+      />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .container {
+  z-index: 10;
+  position: relative;
+}
+.header {
+  text-align: center;
+  font-size: 100px;
+  font-weight: 100;
+}
+.input-container {
   display: flex;
   width: 100%;
   margin-bottom: 10px;
