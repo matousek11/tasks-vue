@@ -1,4 +1,4 @@
-# ukolnicek-vue
+# tasks-vue
 
 Written to learn basics of Vue. App consists of input field and custom made buttons. List with tasks is scrollable.
 ![Notes screenshot](readme/vue-notes-screenshot.png)
